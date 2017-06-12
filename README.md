@@ -5,7 +5,7 @@ This script can be used for setting up a customized mailfilter config with **Spa
 * When moving a message *from* 'Junk | Spam | Junk-E-Mail' *to* 'Inbox' it will be learned by DSPAM as Ham
 * When moving a message *from* 'Inbox' *to* 'Junk | Spam | Junk-E-Mail' it will be learned by DSPAM as Spam
 
-#Installation of Mailfilter
+# Installation of Mailfilter
 ### Core Files
 * Rename `.mailfilter` to `.mailfilter-EXT` before, if you are using vmailmgr instead (see: https://wiki.uberspace.de/mail:vmailmgr).
 * Put the file `.mailfilter` and the folder `.mailfilters` in the home directory of your uberspace.
@@ -34,7 +34,7 @@ Run this to add a service for cleaning DSPAM database periodically:
   ln -s ~/etc/run-dspam_clean_hashdb ~/service/dspam_clean_hashdb
 ```
 
-# Credits and used Code Snippets
+# Credits and used code snippets
 * https://wiki.uberspace.de/mail:maildrop and https://wiki.uberspace.de/mail:dspam
 * https://blog.macfrog.de/2014/05/10/maildrop-revisited/
 * https://github.com/nerdoc/uberspace-tools
