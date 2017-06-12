@@ -5,7 +5,7 @@ This script can be used for setting up a customized mailfilter config with **Spa
 * When moving a message *from* 'Junk | Spam | Junk-E-Mail' *to* 'Inbox' it will be learned by DSPAM as Ham
 * When moving a message *from* 'Inbox' *to* 'Junk | Spam | Junk-E-Mail' it will be learned by DSPAM as Spam
 
-##Installation of Mailfilter
+#Installation of Mailfilter
 ### Core Files
 * Rename `.mailfilter` to `.mailfilter-EXT` before, if you are using vmailmgr instead (see: https://wiki.uberspace.de/mail:vmailmgr).
 * Put the file `.mailfilter` and the folder `.mailfilters` in the home directory of your uberspace.
@@ -16,26 +16,25 @@ This script can be used for setting up a customized mailfilter config with **Spa
 
 Run this to add `dspam-learn` as a service:
 
+```
   test -d ~/service || uberspace-setup-svscan
   runwhen-conf ~/etc/run-dspam-learn "$HOME/bin/dspam-learn"
   sed -i -e "s/^RUNWHEN=.*/RUNWHEN=\",M=`awk 'BEGIN { srand(); printf("%d\n",rand()*60) }'`\"/" ~/etc/run-dspam-learn/run
   ln -s ~/etc/run-dspam-learn ~/service/dspam-learn
-
+```
 
 ### Cleaning DSPAM database periodically
 
 Run this to add a service for cleaning DSPAM database periodically:
 
+```
   test -d ~/service || uberspace-setup-svscan
   runwhen-conf ~/etc/run-dspam_clean_hashdb "/usr/local/bin/dspam_clean_hashdb"
   sed -i -e "s/^RUNWHEN=.*/RUNWHEN=\",H=`awk 'BEGIN { srand(); printf("%d\n",rand()*24) }'`\"/" ~/etc/run-dspam_clean_hashdb/run
   ln -s ~/etc/run-dspam_clean_hashdb ~/service/dspam_clean_hashdb
+```
 
-
-##Usage
-...
-
-## Credits and used Code Snippets
+# Credits and used Code Snippets
 * https://wiki.uberspace.de/mail:maildrop and https://wiki.uberspace.de/mail:dspam
 * https://blog.macfrog.de/2014/05/10/maildrop-revisited/
 * https://github.com/nerdoc/uberspace-tools
