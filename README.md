@@ -11,7 +11,7 @@ This script can be used for setting up a customized mailfilter config with **Spa
 ### Core Files
 * Set up `.qmail` and `maildrop` before (see uberspace Wiki for setting up [.qmail](https://wiki.uberspace.de/mail:dotqmail) and [Maildrop](https://wiki.uberspace.de/mail:maildrop))
 * Rename `.mailfilter` to `.mailfilter-EXT` (replace `EXT` by your namespace) before, if you are using [vmailmgr](https://wiki.uberspace.de/mail:vmailmgr).
-* Put the file `.mailfilter` and the folder `.mailfilters` in the home directory of your uberspace.
+* Put the file `.mailfilter` (or `.mailfilter-EXT`) and the folder `.mailfilters` in the home directory of your uberspace.
 * Create directory `~/var/log` - it will be used as path for mailfilter logfile
 * `dspam-learn` goes to `~/bin` (its logfile and database will later be found in `~/.dspam`)
 
@@ -19,7 +19,7 @@ This script can be used for setting up a customized mailfilter config with **Spa
 
 Run this to add `dspam-learn` as a service:
 
-```
+```bash
   test -d ~/service || uberspace-setup-svscan
   runwhen-conf ~/etc/run-dspam-learn "$HOME/bin/dspam-learn"
   sed -i -e "s/^RUNWHEN=.*/RUNWHEN=\",M=`awk 'BEGIN { srand(); printf("%d\n",rand()*60) }'`\"/" ~/etc/run-dspam-learn/run
@@ -30,7 +30,7 @@ Run this to add `dspam-learn` as a service:
 
 Run this to add a service for cleaning DSPAM database periodically:
 
-```
+```bash
   test -d ~/service || uberspace-setup-svscan
   runwhen-conf ~/etc/run-dspam_clean_hashdb "/usr/local/bin/dspam_clean_hashdb"
   sed -i -e "s/^RUNWHEN=.*/RUNWHEN=\",H=`awk 'BEGIN { srand(); printf("%d\n",rand()*24) }'`\"/" ~/etc/run-dspam_clean_hashdb/run
@@ -42,3 +42,6 @@ Run this to add a service for cleaning DSPAM database periodically:
 * [Thorsten Köster](https://blog.macfrog.de/2014/05/10/maildrop-revisited/)
 * [Christian González](https://github.com/nerdoc/uberspace-tools)
 * [Jonas Pasche](http://blog.jonaspasche.com/2010/03/23/dspam-automatisch-trainieren/)
+
+# Feedback
+This is work in progress, so do not hesitate to give feedback and/or provide pull requests.
