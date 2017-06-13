@@ -96,7 +96,20 @@ if ( ! $REDELIVER_HAM )
   # process SPAM
   if ( /^X-Spam-Level: \*{$SPAMASSASSIN_MINSPAMSCORE,}$/ || /^X-DSPAM-Result: Spam/ )
   {
-    log "DSPAM - Spam detected:"
+    if ( /^X-Spam-Level: \*{$SPAMASSASSIN_MINSPAMSCORE,}$/ && ! /^X-DSPAM-Result: Spam/ )
+    {
+      SPAM_SERVICE="SpamAssassin"
+    }
+    elsif ( ! /^X-Spam-Level: \*{$SPAMASSASSIN_MINSPAMSCORE,}$/ && /^X-DSPAM-Result: Spam/ )
+    {
+      SPAM_SERVICE="DSPAM"
+    }
+    else
+    {
+      SPAM_SERVICE="SpamAssassin/DSPAM"
+    }
+
+    log "$SPAM_SERVICE - Spam detected:"
 
     # Adding 'X-Spam-Folder: YES' Header
     xfilter "reformail -a'X-Spam-Folder: YES'"
