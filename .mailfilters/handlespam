@@ -52,7 +52,7 @@ if ( $REDELIVER_SPAM )
 import REDELIVER_HAM
 if ( $REDELIVER_HAM )
 {
-  log "DSPAM-Reclassified - Whitelisted:"
+  log "DSPAM-Reclassified - Ham detected:"
 
   # Removing 'X-Spam-Folder: YES' Header
   if (/^X-Spam-Folder:/:h)
