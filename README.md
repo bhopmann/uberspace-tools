@@ -1,5 +1,9 @@
 # uberspace-tools
 
+> Attention: This mailfilter does only work for Uberspace 6 (Uberspace 5 will be dropped very soon), because Uberspace 7 doesn't ship with DSPAM (unmaintained). SpamAssassin and runwhen aren't available yet on Uberspace 7. Nevertheless DSPAM could be compiled and configured on user base.
+
+---
+
 This script can be used for setting up a customized mailfilter config with **SpamAssassin** and **DSPAM** on an [uberspace](https://uberspace.de) server. Every message will be filtered by these two services. [Custom rules](https://wiki.uberspace.de/mail:maildrop#sonstige_filtereien) can be added too. If messages from known spammers are not correctly recognised as spam by DSPAM, they can be manually taught as spam by setting up a [blacklist](http://blog.jonaspasche.com/2010/03/23/dspam-automatisch-trainieren/).
 
 The main goal of this filter is a more intuitive workflow with less special folders (like `Learn as Spam` and `Learn as Ham`) when showing messages to DSPAM via a customized `dspam-learn` script so it can learn. This is realized by marking messages, recognised or reclassified as spam, with the header `X-Spam-Folder: YES`, which is removed for messages that are reclassified as ham. All reclassified messages will be re-delivered via `maildrop`. Finally, teaching spam or ham works like this:
