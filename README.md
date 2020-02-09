@@ -1,6 +1,7 @@
 # uberspace-tools
 
 > Attention: This mailfilter does only work for Uberspace 6, because Uberspace 7 doesn't ship with DSPAM (unmaintained), SpamAssassin and runwhen.
+
 ---
 
 This script can be used for setting up a customized mailfilter config with **SpamAssassin** and **DSPAM** on an [Uberspace 6](https://uberspace.de) server. Every message will be filtered by these two services. [Custom rules](https://wiki.uberspace.de/mail:maildrop#sonstige_filtereien) can be added too. If messages from known spammers are not correctly recognised as spam by DSPAM, they can be manually taught as spam by setting up a [blacklist](http://blog.jonaspasche.com/2010/03/23/dspam-automatisch-trainieren/).
