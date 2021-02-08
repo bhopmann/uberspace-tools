@@ -1,6 +1,6 @@
 # uberspace-tools
 
-> Attention: This mailfilter does only work for Uberspace 6, because Uberspace 7 doesn't ship with DSPAM (unmaintained), SpamAssassin and runwhen. A mailfilter configuration for Uberspace 7 can be found [here](https://github.com/stratmaster/uberspace7-mailfilter).
+> Attention: This mailfilter does only work for Uberspace 6, because Uberspace 7 doesn't ship with DSPAM (unmaintained), SpamAssassin and runwhen. A mailfilter configuration for Uberspace 7 can be found [here](https://github.com/bhopmann/uberspace7-mailfilter).
 
 ---
 
