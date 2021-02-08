@@ -78,14 +78,14 @@ if ( ! $REDELIVER_HAM )
     # Show mail to DSPAM
     xfilter "/package/host/localhost/dspam/bin/dspam --mode=teft --deliver=innocent,spam --stdout"
 
-    if ( $DSPAM_BLACKLIST )
+    if ( $DSPAM_BLOCKLIST )
     {
       # If mails from known spammers are not correctly recognised as spam, teach them as spam
       # Source: http://blog.jonaspasche.com/2010/03/23/dspam-automatisch-trainieren/
       `test -f "$HOME/.mailfilters/badfrom"`
       if( $RETURNCODE == 0 && ! /^X-DSPAM-Result: Spam/ && /^From:.*/ && lookup($MATCH, "$HOME/.mailfilters/badfrom") )
       {
-        log "DSPAM - Spam detected from Blacklist:"
+        log "DSPAM - Spam detected from Blocklist:"
         xfilter "/package/host/localhost/dspam/bin/dspam --class=spam --source=error --deliver=innocent,spam --stdout"
       }
     }
